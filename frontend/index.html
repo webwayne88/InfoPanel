@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistant</title>
+    <link rel="stylesheet" href="dialog_style_test.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Левая панель -->
+        <div class="sidebar">
+            <div class="logo-container">
+                <div class="logo" id="logo">
+                    <span>A</span>
+                    <span>S</span>
+                    <span>S</span>
+                    <span>I</span>
+                    <span>S</span>
+                    <span>T</span>
+                    <span>A</span>
+                    <span>N</span>
+                    <span>T</span>
+                </div>
+                <div class="tagline">Помощник анализа очередей</div>
+            </div>
+        </div>
+
+        <!-- Основная область -->
+        <div class="main-content">
+            <div class="chat-container">
+                <div class="chat-box" id="chatBox">
+                    <div class="welcome-message">
+                        <div class="welcome-bubble">Добро пожаловать! Я ваш персональный AI-ассистент.</div>
+                    </div>
+                </div>
+                
+                <div class="input-container">
+                    <input type="text" id="userInput" placeholder="Введите ваш вопрос...">
+                    <button onclick="sendMessage()">
+                        <span class="button-text">Отправить</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dialog_script_test.js"></script>
+</body>
+</html>

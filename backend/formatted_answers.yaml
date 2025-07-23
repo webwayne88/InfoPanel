@@ -1,0 +1,68 @@
+HIDDEN_TABLE: |
+  <div class="expandable-widget">
+    <style>
+        .expandable-widget {{
+            margin: 20px 0;
+            font-family: Arial, sans-serif;
+        }}
+        
+        .expand-btn {{
+            position: relative;
+            padding: 15px 40px 15px 20px;
+            background: #22c55a;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: left;
+            width: auto;
+            transition: background 0.3s;
+        }}
+        
+        .expand-btn::after {{
+            content: '▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            transition: transform 0.3s;
+        }}
+        
+        .expand-btn.active::after {{
+            transform: translateY(-50%) rotate(180deg);
+        }}
+        
+        .content-wrapper {{
+            width: auto;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }}
+        
+        .content-box {{
+            width: auto;        
+            padding: 3px;
+        }}
+        
+        .info-table {{
+            width: auto;
+            border-collapse: collapse;
+        }}
+        
+        .info-table td, .info-table th {{
+            padding: 8px;
+            border: 1px solid #ddd;
+        }}
+        
+    </style>
+
+    <button class="expand-btn" onclick="toggleExpandable(this)">
+        {query_description}
+    </button>
+
+    <div class="content-wrapper">
+        <div class="content-box">
+            {table}
+            </div>
+    </div>
+  </div>

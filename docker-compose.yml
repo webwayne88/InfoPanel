@@ -1,0 +1,12 @@
+services:
+  flask-service:
+    build: ./backend
+    ports:
+      - "8090:8090"
+    environment:
+      - FLASK_APP=assistant_server.py
+
+  html-service:
+    build: ./frontend
+    ports:
+      - "8091:8091"
