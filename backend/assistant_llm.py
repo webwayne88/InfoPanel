@@ -110,13 +110,13 @@ def planner_function(question):
     return result
 
 
-def sql_translator_function(question):
+def sql_translator_function(question, history_prompt):
     """
     Преобразование запроса на естественном языке в sql запрос и поиск в базе данных
     """
     
     datetime_prompt = get_current_datetime_prompt()
-    result_translator_system_prompt = translator_system_prompt + datetime_prompt
+    result_translator_system_prompt = translator_system_prompt + history_prompt + datetime_prompt
     current_question_query = giga_llm.invoke([{"role": "system", "content": result_translator_system_prompt},
                                                 {"role": "user", "content": question}])
     

@@ -97,7 +97,8 @@ def generate_answers(question):
             llm_questions = llm_questions["questions"]
             print("planner questions",llm_questions)
             
-
+            memory = """История обращений к базе данных (возможно, нужно сформировать вопрос на основе ответов на предыдущие вопросы):
+            """
             # Генерация запросов и поиск в базе данных
             for current_question in llm_questions:
                 error_prompt = ""
@@ -114,15 +115,16 @@ def generate_answers(question):
                         yield result
                         
                         print("new query generation")
-                        db_query = assistant_llm.sql_translator_function(prompt)
+                        db_query = assistant_llm.sql_translator_function(prompt, memory)
                         queries.append(db_query)
                         thinking_message = {'type': 'thinking', 'content': f"<i>{db_query}</i> <br>"}
                         result = f"data: {json.dumps(thinking_message, ensure_ascii=True)}\n\n"
                         print(result)
                         yield result
-
                         db_query = assistant_llm.sql_critique_function(current_question, queries)
                         llm_result = assistant_llm.db_searcher(db_query)
+                        memory += f"""Вопрос: {current_question} Что было найдено: {llm_result[:3].to_string()}
+"""
                         break
 
                     except:

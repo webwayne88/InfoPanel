@@ -5,7 +5,7 @@ def load_yaml_data(filepath: str):
         data = yaml.safe_load(f)
     return data
 
-system_prompts = load_yaml_data("./prompt_collection.yaml")
+system_prompts = load_yaml_data("./prompt_collection_test.yaml")
 
 
 class AssistantPrompts:
